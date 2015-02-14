@@ -15,31 +15,29 @@
 		}
 		public function create($data){
 			$datos= array(
- 				'maestro'=>$data['nombre'],
- 				'direccion'=> $data['direccion'],
- 				'sueldo'=>$data['sueldo'],
- 				'telefono'=>$data['telefono']
+ 				'Maestro'=>$data['nombre'],
+ 				'Direccion'=> $data['direccion'],
+ 				'Telefono'=>$data['telefono']
  			);
  			$this->db->insert('maestros',$datos);
  		}	
 		public function update($data){
 			$datos= array(
- 				'maestro'=>$data['nombre'],
- 				'direccion'=> $data['direccion'],
- 				'sueldo'=>$data['sueldo'],
- 				'telefono'=>$data['telefono']
+ 				'Maestro'=>$data['nombre'],
+ 				'Direccion'=> $data['direccion'],
+ 				'Telefono'=>$data['telefono']
  			);
-			$this->db->where('idMaestro',$data['id']);
+			$this->db->where('IdMaestro',$data['id']);
 			$q= $this->db->update('maestros',$datos);
  		}
  		public function delete($id){
- 			$this->db->where('idMaestro',$id);
-			$this->db->delete('maestros');
+ 			$this->db->where('IdMaestro',$id);
+			$this->db->delete('Maestros');
  		}
 
  		public function getByName($nombre)
 		{
-			$this->db->like('maestro', $nombre); 
+			$this->db->like('Maestro', $nombre); 
 			$q = $this->db->get('maestros');
 			$d = array();
 			foreach ($q->result() as $r)
@@ -47,6 +45,11 @@
 				$d[]= $r;
 			}
 			return $d;
+		}
+		public function getById($id){
+			 $this->db->where('IdMaestro',$id);
+			$q= $this->db->get('maestros');
+			return $q;
 		}		
 				
  	}

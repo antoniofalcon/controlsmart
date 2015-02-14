@@ -30,7 +30,6 @@ class Maestros extends REST_Controller {
 		$data = array(
 			'nombre'=>$this->input->post('txtNombre'),
 			'direccion'=>$this->input->post('txtDireccion'),
-			'sueldo'=>$this->input->post('txtSueldo'),
 			'telefono'=>$this->input->post('txtTelefono')
 			);
 
@@ -47,7 +46,6 @@ class Maestros extends REST_Controller {
 		$data = array(
 			'nombre'=>$this->input->post('txtNombre'),
 			'direccion'=>$this->input->post('txtDireccion'),
-			'sueldo'=>$this->input->post('txtSueldo'),
 			'telefono'=>$this->input->post('txtTelefono'),
 			'id'=>$this->uri->segment(3)
 			);
