@@ -7,7 +7,7 @@ class Clientes extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
-        
+        $this->load->model('clientes_model');
     }
     
 	public function index_get()
@@ -21,13 +21,19 @@ class Clientes extends REST_Controller {
 	{
 		$data['title']= 'Clientes';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/clientes/create');
 		$this->load->view('footer');
 	}
 	public function create_post()
 	{
 		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+
+		$data = array(
+			'cliente'=>$this->input->post('txtNombre'),
+			'celular'=>$this->input->post('txtTelefono')
+			);
+
+		$this->clientes_model->create($data);
 	}
 	public function edit_get()
 	{
@@ -37,9 +43,13 @@ class Clientes extends REST_Controller {
 	}
 	public function edit_post()
 	{
-		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$data = array(
+			'cliente'=>$this->input->post('txtNombre'),
+			'celular'=>$this->input->post('txtTelefono'),
+			'id'=>$this->uri->segment(3)
+			);
+
+		$this->clientes_model->update($data);
 	}
 	
 	public function delete_get()
@@ -51,9 +61,7 @@ class Clientes extends REST_Controller {
 
 	public function delete_post()
 	{
-		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$this->clientes_model->delete($id);
 	}
 }	
 ?>
