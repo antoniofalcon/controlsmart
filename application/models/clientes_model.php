@@ -25,7 +25,7 @@
 		public function update($data){
 
 			$datos= array(
- 				'cliente'=>$data['nombre'],
+ 				'cliente'=>$data['cliente'],
  				'celular'=> $data['celular']
  			);
 			$this->db->where('idCliente',$data['id']);
@@ -33,7 +33,7 @@
  		}
  		public function delete($data){
 
- 			$this->db->where('idCliente',$id);
+ 			$this->db->where('idCliente',$data['id']);
 			$this->db->delete('clientes');
 
  		}
