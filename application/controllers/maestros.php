@@ -8,11 +8,14 @@ class Maestros extends REST_Controller {
         // Construct our parent class
         parent::__construct();
         $this->load->model('maestros_model');
+        $this->load->helper('form');
     }
 	public function index_get()
 	{
+		$data['datos'] = $this->maestros_model->getAll();
 		$data['title']= 'Maestros';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/maestros/index',$data);
 		$this->load->view('footer');
 	}
 
@@ -37,8 +40,11 @@ class Maestros extends REST_Controller {
 	}
 	public function edit_get()
 	{
+		$data['id']= $this->uri->segment(3);
+		$data['datos'] = $this->maestros_model->getById($data['id']);
 		$data['title']= 'Maestros';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/maestros/edit',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
@@ -53,10 +59,13 @@ class Maestros extends REST_Controller {
 		$this->maestros_model->update($data);
 	}
 	
-	public function delete_get()
+	public function delete_get($id)
 	{
+		$data['id']= $id;
+		$data['datos'] = $this->maestros_model->getById($data['id']);
 		$data['title']= 'Maestros';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/maestros/delete',$data);
 		$this->load->view('footer');
 	}
 
