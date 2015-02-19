@@ -7,52 +7,73 @@ class Cursos extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
-        
+        $this->load->model('cursos_model');
+        $this->load->helper('form');
     }
 	public function index_get()
 	{
-		$data['title']= 'Cursos';
+		$data['datos'] = $this->cursos_model->getAll();
+		$data['title']= 'cursos';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/cursos/index',$data);
 		$this->load->view('footer');
 	}
 
 	public function create_get()
 	{
-		$data['title']= 'Cursos';
+		$data['title']= 'cursos';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/cursos/create');
 		$this->load->view('footer');
 	}
 	public function create_post()
 	{
-		$data['title']= 'Cursos';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$data['title']= 'cursos';
+
+		$data = array(
+			'IdMaestro'=>$this->input->post('dpnIdMaestro'),
+			'curso'=>$this->input->post('txtCurso'),
+			'horainicio'=>$this->input->post('txtHoraInicio'),
+			'horasalida'=>$this->input->post('txtHoraSalida')
+			);
+
+		$this->cursos_model->create($data);
 	}
 	public function edit_get()
 	{
-		$data['title']= 'Cursos';
+		$data['id']= $this->uri->segment(3);
+		$data['datos'] = $this->cursos_model->getById($data['id']);
+		$data['title']= 'cursos';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/Cursos/edit',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
-	{
-		$data['title']= 'Cursos';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+	{ 
+		$data = array(
+			'IdMaestro'=>$this->input->post('dpnIdMaestro'),
+			'curso'=>$this->input->post('txtCurso'),
+			'horainicio'=>$this->input->post('txtHoraInicio'),
+			'horasalida'=>$this->input->post('txtHoraSalida'),
+			'id'=>$this->uri->segment(3)
+			);
+
+		$this->cursos_model->update($data);
 	}
 	
 	public function delete_get()
 	{
+		$data['id']= $id;
+		$data['datos'] = $this->cursos_model->getById($data['id']);
 		$data['title']= 'Cursos';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/Cursos/delete',$data);
 		$this->load->view('footer');
 	}
 
 	public function delete_post()
 	{
-		$data['title']= 'Cursos';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$this->cursos_model->delete($id);
 	}
 }	
 ?>
