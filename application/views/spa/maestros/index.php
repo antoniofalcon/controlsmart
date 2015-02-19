@@ -9,7 +9,7 @@
 		echo '<td>'.$value->Direccion.'</td>';
 		echo '<td>'.$value->Telefono.'</td>';
 
-		echo '<td><a href="/controlsmart/maestros/edit/'.$value->IdMaestro.'">Editar/</a>
+		echo '<td><a href="/controlsmart/maestros/edit/'.$value->IdMaestro.'">Editar </a>/
 		<a href="/controlsmart/maestros/delete/'.$value->IdMaestro.'">Eliminar</a></td>';
 		echo '</tr>';
 	}

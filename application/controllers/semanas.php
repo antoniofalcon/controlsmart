@@ -7,12 +7,15 @@ class Semanas extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
-        
+        $this->load->model('semanas_model');
+        $this->load->helper('form');
     }
 	public function index_get()
 	{
+		$data['datos'] = $this->semanas_model->getAll();
 		$data['title']= 'Semanas';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/semanas/index',$data);
 		$this->load->view('footer');
 	}
 
@@ -20,39 +23,53 @@ class Semanas extends REST_Controller {
 	{
 		$data['title']= 'Semanas';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/semanas/create');
 		$this->load->view('footer');
 	}
 	public function create_post()
 	{
 		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+
+		$data = array(
+			'semana'=>$this->input->post('txtSemana'),
+			'costo'=>$this->input->post('txtCosto')			
+			);
+
+		$this->semanas_model->create($data);
 	}
 	public function edit_get()
 	{
+		$data['id']= $this->uri->segment(3);
+		$data['datos'] = $this->semanas_model->getById($data['id']);
 		$data['title']= 'Semanas';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/semanas/edit',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
 	{
-		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$data = array(
+			'semana'=>$this->input->post('txtSemana'),
+			'costo'=>$this->input->post('txtCosto')			
+			'id'=>$this->uri->segment(3)
+			);
+
+		$this->semanas_model->update($data);
 	}
 	
-	public function delete_get()
+	public function delete_get($id)
 	{
+		$data['id']= $id;
+		$data['datos'] = $this->semanas_model->getById($data['id']);
 		$data['title']= 'Semanas';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/semanas/delete',$data);
 		$this->load->view('footer');
 	}
 
-	public function delete_post()
+	public function delete_post($id)
 	{
-		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$this->semanas_model->delete($id);
 	}
 }	
 ?>
