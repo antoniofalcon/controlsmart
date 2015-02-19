@@ -31,8 +31,8 @@ class Semanas extends REST_Controller {
 		$data['title']= 'Semanas';
 
 		$data = array(
-			'semana'=>$this->input->post('txtSemana'),
-			'costo'=>$this->input->post('txtCosto')			
+			'Semana'=>$this->input->post('txtSemana'),
+			'Costo'=>$this->input->post('txtCosto')			
 			);
 
 		$this->semanas_model->create($data);
@@ -49,8 +49,8 @@ class Semanas extends REST_Controller {
 	public function edit_post()
 	{
 		$data = array(
-			'semana'=>$this->input->post('txtSemana'),
-			'costo'=>$this->input->post('txtCosto')			
+			'Semana'=>$this->input->post('txtSemana'),
+			'Costo'=>$this->input->post('txtCosto'),		
 			'id'=>$this->uri->segment(3)
 			);
 

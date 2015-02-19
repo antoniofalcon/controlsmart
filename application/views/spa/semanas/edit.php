@@ -12,7 +12,7 @@
 	
 ?>
 <?= form_label('Semana: ','txtSemana');?>
-<?= form_input($semana); ?>
+<?= form_input($Semana); ?>
 <br>
 <?= form_label('Costo: ','txtCosto');?>
 <?= form_input($costo); ?>
