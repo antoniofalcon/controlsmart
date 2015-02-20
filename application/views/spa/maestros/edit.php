@@ -4,15 +4,15 @@
 	$nombre= array(
 		'name'=>'txtNombre',
 		'id'=>'txtNombre',
-		'value'=>$datos->result()[0]->Maestro);
+		'value'=>$datos->result()[0]->maestro);
 	$direccion= array(
 		'name'=>'txtDireccion',
 		'id'=>'txtDireccion',
-		'value'=>$datos->result()[0]->Direccion);
+		'value'=>$datos->result()[0]->direccion);
 	$telefono= array(
 		'name'=>'txtTelefono',
 		'id'=>'txtTelefono',
-		'value'=>$datos->result()[0]->Telefono);
+		'value'=>$datos->result()[0]->telefono);
 	
 ?>
 <?= form_label('Nombre: ','txtNombre');?>

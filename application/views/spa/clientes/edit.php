@@ -6,11 +6,11 @@
 	$nombre= array(
 		'name'=>'txtNombre',
 		'id'=>'txtNombre',
-		'value'=>$datos->result()[0]->Cliente);
+		'value'=>$datos->result()[0]->cliente);
 	$telefono= array(
 		'name'=>'txtTelefono',
 		'id'=>'txtTelefono',
-		'value'=>$datos->result()[0]->Celular);
+		'value'=>$datos->result()[0]->celular);
 	
 ?>
 <?= form_label('Nombre: ','txtNombre');?>

@@ -5,11 +5,11 @@
 	foreach ($datos as $value) {
 		echo '<tr>';
 		
-		echo '<td>'.$value->Cliente.'</td>';
+		echo '<td>'.$value->cliente.'</td>';
 		
-		echo '<td>'.$value->Celular.'</td>';
-		echo '<td><a href="/controlsmart/clientes/edit/'.$value->IdCliente.'">Editar</a>
-		<a href="/controlsmart/clientes/delete/'.$value->IdCliente.'">/Eliminar</a></td>';
+		echo '<td>'.$value->celular.'</td>';
+		echo '<td><a href="/controlsmart/clientes/edit/'.$value->idCliente.'">Editar</a>
+		<a href="/controlsmart/clientes/delete/'.$value->idCliente.'">/Eliminar</a></td>';
 		echo '</tr>';
 	}
 ?>

@@ -4,11 +4,11 @@
 	$Semana= array(
 		'name'=>'txtSemana',
 		'id'=>'txtNombre',
-		'value'=>$datos->result()[0]->Semana);
+		'value'=>$datos->result()[0]->semana);
 	$costo= array(
 		'name'=>'txtCosto',
 		'id'=>'txtCosto',
-		'value'=>$datos->result()[0]->Costo);
+		'value'=>$datos->result()[0]->costo);
 	
 ?>
 <?= form_label('Semana: ','txtSemana');?>

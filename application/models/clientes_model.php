@@ -33,7 +33,7 @@
  		}
  		public function delete($data){
 
- 			$this->db->where('IdCliente',$data);
+ 			$this->db->where('idCliente',$data);
 			$this->db->delete('clientes');
 
  		}
