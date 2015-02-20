@@ -5,17 +5,79 @@
  			$this->load->database();
  		}		
 		public function getAll(){
-			
+			$q = $this->db->get('cursos');
+			$d = array();
+			foreach ($q->result() as $r)
+			{
+				$d[]= $r;
+			}
+			return $d;
 		}
 		public function create($data){
+			$datos=array(
+ 				'idMaestro'=>$data['idMaestro'],
+ 				'curso'=> $data['curso'],
+ 				'horaInicio'=>$data['horaInicio'],
+ 				'horaSalida'=>$data['horaSalida']
+ 				
+ 			);
+ 			$this->db->insert('Cursos',$datos);
+			
 
  		}	
+ 		
 		public function update($data){
+			$datos= array(
+ 				'idMaestro'=>$data['idMaestro'],
+ 				'curso'=> $data['curso'],
+ 				'horaInicio'=>$data['horaInicio'],
+ 				'horaSalida'=>$data['horaSalida']
+ 			);
+			$this->db->where('idCurso',$data['id']);
+			$q= $this->db->update('cursos',$datos);
 
  		}
- 		public function delete($data){
+ 		public function delete($data){}
+ 		$this->db->where('idCurso',$data['id']);
+			$this->db->delete('cursos');
 
  		}
-				
+		public function getByName($nombre)
+		{
+
+            $this->db->like('curso', $Curso); 
+			$this->db->select('maestro,curso,horaInicio,horaSalida');
+			$this->db->from('cursos');
+			$this->db->join('maestros', 'maestros.idMaestro = cursos.idMaestro');
+			$q = $this->db->get();
+			$d = array();
+			foreach ($q->result() as $r)
+			{
+				$d[]= $r;
+			}
+			return $d;
+		}		
+ 	
+        public function getById($id){
+			 $this->db->where('idCurso',$id);
+			$q= $this->db->get('cursos');
+			return $q;
+		}
+ 	public function getAllJoin()
+		{
+
+			$this->db->select('maestro,curso,horaInicio,horaSalida');
+			$this->db->from('cursos');
+			$this->db->join('maestros', 'maestros.idMaestro = cursos.idMaestro');
+			$q = $this->db->get();
+			$d = array();
+			foreach ($q->result() as $r)
+			{
+				$d[]= $r;
+			}
+			return $d;
+		}
+
+
  	}
  ?>
