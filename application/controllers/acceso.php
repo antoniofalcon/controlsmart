@@ -19,51 +19,60 @@ class Acceso extends REST_Controller {
 
 	public function create_get()
 	{
-		$data['title']= 'Clientes';
+		$data['title']= 'Usuarios';
 		$this->load->view('header',$data);
 		$this->load->view('/spa/clientes/create');
 		$this->load->view('footer');
 	}
 	public function create_post()
 	{
-		$data['title']= 'Clientes';
-
-		$data = array(
-			'cliente'=>$this->input->post('txtNombre'),
-			'celular'=>$this->input->post('txtTelefono')
-			);
-
-		$this->clientes_model->create($data);
+		$data['title']= 'Usuarios';
+		$data = getMethodPost();
+		$this->acceso_model->create($data);
 	}
 	public function edit_get()
 	{
-		$data['title']= 'Clientes';
+		$data['title']= 'Usuarios';
 		$this->load->view('header',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
 	{
-		
+		$data = getMethodPost();		
+		$data['id'] = $this->uri->segment(3);
+		$this->acceso_model->update($data);
 	}
 	
-	public function delete_get()
+	public function delete_get($id)
 	{
-		
+		$data['title']= 'Usuarios';
+		$this->load->view('header',$data);
+		$this->load->view('footer');
 	}
 
 	public function delete_post($id)
 	{
-
+		$this->acceso_model->delete($id);
 	}
 	public function login_post()
 	{
 		$data['title']= 'Login';
 		$data = array(
 			'cuenta'=>$this->input->post('txtCuenta'),
-			'password'=>$this->input->post('txtPassword')
+			'pswd'=>$this->input->post('txtPassword')
 			);
 
 		$this->acceso_model->login($data);
+	}
+
+	private function getMethodPost(){
+		$data = array(
+			'usuario'=>$this->input->post('txtNombre'),
+			'cuenta'=>$this->input->post('txtCuenta'),
+			'pswd'=>$this->input->post('txtPswd'),
+			'cPswd'=>$this->input->post('txtCPswd')
+			);
+		return $data;
 	}
 }	
 ?>

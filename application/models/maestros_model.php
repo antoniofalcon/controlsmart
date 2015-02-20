@@ -15,9 +15,9 @@
 		}
 		public function create($data){
 			$datos= array(
- 				'Maestro'=>$data['nombre'],
- 				'Direccion'=> $data['direccion'],
- 				'Telefono'=>$data['telefono']
+ 				'maestro'=>$data['nombre'],
+ 				'direccion'=> $data['direccion'],
+ 				'telefono'=>$data['telefono']
  			);
  			$this->db->insert('maestros',$datos);
  		}	

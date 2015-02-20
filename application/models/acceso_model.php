@@ -5,20 +5,62 @@
  			$this->load->database();
  		}		
 		public function login($data){
-			$this->db->where('Cuenta',$data['cuenta']);
-			$this->db->where('Pswd',$data['password']);
+			$this->db->where('cuenta',$data['cuenta']);
+			$this->db->where('pswd',$data['pswd']);
 			$q= $this->db->get('usuarios');
 			return $q;
 		}
+		public function getAll(){
+			$q = $this->db->get('usuarios');
+			$d = array();
+			foreach ($q->result() as $r)
+			{
+				$d[]= $r;
+			}
+			return $d;
+		}
 		public function create($data){
-
+			$datos= array(
+ 				'usuario'=>$data['usuario'],
+ 				'cuenta'=> $data['cuenta'],
+ 				'pswd'=>$data['pswd'],
+ 				'cPswd'=>$data['cPswd'],
+ 				'nivel'=>$data['nivel']
+ 			);
+ 			$this->db->insert('usuarios',$datos);
  		}	
 		public function update($data){
-
+			$datos= array(
+ 				'usuario'=>$data['usuario'],
+ 				'cuenta'=> $data['cuenta'],
+ 				'pswd'=>$data['pswd'],
+ 				'cPswd'=>$data['cPswd'],
+ 				'nivel'=>$data['nivel']
+ 			);
+ 			$this->db->where('idUsuario',$data['id']);
+			$q= $this->db->update('usuarios',$datos);
  		}
- 		public function delete($data){
-
+ 		
+ 		public function delete($id){
+ 			$this->db->where('idUsuario',$id);
+			$this->db->delete('usuarios');
  		}
-				
+			
+		public function getByName($nombre)
+		{
+			$this->db->like('usuario', $nombre); 
+			$q = $this->db->get('usuarios');
+			$d = array();
+			foreach ($q->result() as $r)
+			{
+				$d[]= $r;
+			}
+			return $d;
+		}
+		public function getById($id){
+			$this->db->where('idUsuario',$id);
+			$q= $this->db->get('usuarios');
+			return $q;
+		}			
  	}
  ?>
