@@ -23,21 +23,21 @@
  		}	
 		public function update($data){
 			$datos= array(
- 				'Maestro'=>$data['nombre'],
- 				'Direccion'=> $data['direccion'],
- 				'Telefono'=>$data['telefono']
+ 				'maestro'=>$data['nombre'],
+ 				'direccion'=> $data['direccion'],
+ 				'telefono'=>$data['telefono']
  			);
-			$this->db->where('IdMaestro',$data['id']);
+			$this->db->where('idMaestro',$data['id']);
 			$q= $this->db->update('maestros',$datos);
  		}
  		public function delete($id){
- 			$this->db->where('IdMaestro',$id);
-			$this->db->delete('Maestros');
+ 			$this->db->where('idMaestro',$id);
+			$this->db->delete('maestros');
  		}
 
  		public function getByName($nombre)
 		{
-			$this->db->like('Maestro', $nombre); 
+			$this->db->like('maestro', $nombre); 
 			$q = $this->db->get('maestros');
 			$d = array();
 			foreach ($q->result() as $r)
@@ -47,7 +47,7 @@
 			return $d;
 		}
 		public function getById($id){
-			 $this->db->where('IdMaestro',$id);
+			 $this->db->where('idMaestro',$id);
 			$q= $this->db->get('maestros');
 			return $q;
 		}		

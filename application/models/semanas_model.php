@@ -17,29 +17,29 @@
 		}
 		public function create($data){
 			$datos= array(
- 				'Semana'=>$data['Semana'],
- 				'Costo'=> $data['Costo']	
+ 				'semana'=>$data['semana'],
+ 				'sosto'=> $data['costo']	
  			);
  			$this->db->insert('semanas',$datos);
 
  		}	
 		public function update($data){
 			$datos= array(
- 				'Semana'=>$data['Semana'],
- 				'Costo'=> $data['Costo']
+ 				'semana'=>$data['semana'],
+ 				'costo'=> $data['costo']
  			);
-			$this->db->where('IdSemana',$data['id']);
+			$this->db->where('idSemana',$data['id']);
 			$q= $this->db->update('semanas',$datos);
 
  		}
  		public function delete($id){
- 			$this->db->where('IdSemana',$id);
+ 			$this->db->where('idSemana',$id);
 			$this->db->delete('semanas');
 
  		}
 
  		public function getById($id){
-			 $this->db->where('IdSemana',$id);
+			 $this->db->where('idSemana',$id);
 			$q= $this->db->get('semanas');
 			return $q;
 		}	
