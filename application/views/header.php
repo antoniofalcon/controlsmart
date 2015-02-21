@@ -8,6 +8,8 @@
     <script src="/controlsmart/assets/js/app.js"></script>
     <script src="/controlsmart/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/controlsmart/assets/vendor/bootstrap/css/bootstrap.css">
+    <script src="/controlsmart/assets/vendor/jquery/jquery.timepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="/controlsmart/assets/vendor/jquery/jquery.timepicker.css">
   </head>
   <body>
   

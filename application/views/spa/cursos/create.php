@@ -41,4 +41,11 @@
 <?=form_submit('','Guardar'); ?>
 <?=form_close();?>
 
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+    $('#txtHoraInicio').timepicker({});
+});
+</script>
+
 
