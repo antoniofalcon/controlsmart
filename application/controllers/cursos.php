@@ -12,7 +12,7 @@ class Cursos extends REST_Controller {
     }
 	public function index_get()
 	{
-		$data['datos'] = $this->cursos_model->getAll();
+		$data['datos'] = $this->cursos_model->getAllJoin();
 		$data['title']= 'cursos';
 		$this->load->view('header',$data);
 		$this->load->view('/spa/cursos/index',$data);
@@ -21,9 +21,12 @@ class Cursos extends REST_Controller {
 
 	public function create_get()
 	{
+		$this->load->model('maestros_model');
+		$data=array (
+			'maestros'=>$this->maestros_model->getAll());
 		$data['title']= 'cursos';
 		$this->load->view('header',$data);
-		$this->load->view('/spa/cursos/create');
+		$this->load->view('/spa/cursos/create',$data);
 		$this->load->view('footer');
 	}
 	public function create_post()
@@ -31,37 +34,40 @@ class Cursos extends REST_Controller {
 		$data['title']= 'cursos';
 
 		$data = array(
-			'IdMaestro'=>$this->input->post('dpnIdMaestro'),
+			'idMaestro'=>$this->input->post('cboMaestros'),
 			'curso'=>$this->input->post('txtCurso'),
-			'horainicio'=>$this->input->post('txtHoraInicio'),
-			'horasalida'=>$this->input->post('txtHoraSalida')
+			'horaInicio'=>$this->input->post('txtHoraInicio'),
+			'horaSalida'=>$this->input->post('txtHoraSalida')
 			);
 
 		$this->cursos_model->create($data);
 	}
 	public function edit_get()
 	{
+		$this->load->model('maestros_model');
+		$data=array (
+			'maestros'=>$this->maestros_model->getAll());
 		$data['id']= $this->uri->segment(3);
 		$data['datos'] = $this->cursos_model->getById($data['id']);
 		$data['title']= 'cursos';
 		$this->load->view('header',$data);
-		$this->load->view('/spa/Cursos/edit',$data);
+		$this->load->view('/spa/cursos/edit',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
 	{ 
 		$data = array(
-			'IdMaestro'=>$this->input->post('dpnIdMaestro'),
+			'idMaestro'=>$this->input->post('cboMaestros'),
 			'curso'=>$this->input->post('txtCurso'),
-			'horainicio'=>$this->input->post('txtHoraInicio'),
-			'horasalida'=>$this->input->post('txtHoraSalida'),
+			'horaInicio'=>$this->input->post('txtHoraInicio'),
+			'horaSalida'=>$this->input->post('txtHoraSalida'),
 			'id'=>$this->uri->segment(3)
 			);
 
 		$this->cursos_model->update($data);
 	}
 	
-	public function delete_get()
+	public function delete_get($id)
 	{
 		$data['id']= $id;
 		$data['datos'] = $this->cursos_model->getById($data['id']);
@@ -71,7 +77,7 @@ class Cursos extends REST_Controller {
 		$this->load->view('footer');
 	}
 
-	public function delete_post()
+	public function delete_post($id)
 	{
 		$this->cursos_model->delete($id);
 	}

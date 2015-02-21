@@ -31,9 +31,9 @@
 			$this->db->where('idCliente',$data['id']);
 			$q= $this->db->update('clientes',$datos);
  		}
- 		public function delete($data){
+ 		public function delete($id){
 
- 			$this->db->where('idCliente',$data);
+ 			$this->db->where('idCliente',$id);
 			$this->db->delete('clientes');
 
  		}

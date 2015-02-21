@@ -37,8 +37,8 @@
 			$q= $this->db->update('cursos',$datos);
 
  		}
- 		public function delete($data){}
- 		$this->db->where('idCurso',$data['id']);
+ 		public function delete($id){
+ 		$this->db->where('idCurso',$id);
 			$this->db->delete('cursos');
 
  		}
@@ -59,14 +59,18 @@
 		}		
  	
         public function getById($id){
-			 $this->db->where('idCurso',$id);
-			$q= $this->db->get('cursos');
+        	$this->db->select('maestro,idCurso,curso,horaInicio,horaSalida');
+			$this->db->from('cursos');
+			$this->db->join('maestros', 'maestros.idMaestro = cursos.idMaestro');
+			$this->db->where('idCurso',$id);
+			$q = $this->db->get();
+
 			return $q;
 		}
  	public function getAllJoin()
 		{
 
-			$this->db->select('maestro,curso,horaInicio,horaSalida');
+			$this->db->select('maestro,idCurso,curso,horaInicio,horaSalida');
 			$this->db->from('cursos');
 			$this->db->join('maestros', 'maestros.idMaestro = cursos.idMaestro');
 			$q = $this->db->get();
