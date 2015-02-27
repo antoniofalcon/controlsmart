@@ -42,10 +42,10 @@
 			$this->db->delete('cursos');
 
  		}
-		public function getByName($nombre)
+		public function getByName($curso)
 		{
 
-            $this->db->like('curso', $Curso); 
+            $this->db->like('curso', $curso); 
 			$this->db->select('maestro,curso,horaInicio,horaSalida');
 			$this->db->from('cursos');
 			$this->db->join('maestros', 'maestros.idMaestro = cursos.idMaestro');
