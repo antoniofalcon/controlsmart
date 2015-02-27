@@ -7,9 +7,9 @@ class Inscripciones extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
-        $this->load->model{'inscripciones_model'};
-        $this->load->model{'clientes_model'};
-        $this->load->model{'cursos_model'};
+        $this->load->model('inscripciones_model');
+        $this->load->model('clientes_model');
+        $this->load->model('cursos_model');
         
     }
 	public function index_get()
@@ -53,7 +53,7 @@ class Inscripciones extends REST_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function delete_get($id)
+	public function delete_get()
 	{
 		$data['id']= $id;
 		$data['datos'] = $this->inscripciones_model->getById($data['id']);
