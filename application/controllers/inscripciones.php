@@ -7,7 +7,8 @@ class Inscripciones extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
-        
+        $this->load->model('inscripciones_model');
+        $this->load->helper('form');
     }
 	public function index_get()
 	{
@@ -25,8 +26,12 @@ class Inscripciones extends REST_Controller {
 	public function create_post()
 	{
 		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$data = array(
+			'idCliente'=>$this->input->post('cboidCliente'),
+			'idCurso'=>$this->input->post('cboidCurso')
+			);
+
+		$this->inscripciones_model->create($data);
 	}
 	public function edit_get()
 	{
@@ -37,8 +42,14 @@ class Inscripciones extends REST_Controller {
 	public function edit_post()
 	{
 		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$data = array(
+			'idCliente'=>$this->input->post('cboidCliente'),
+			'idCurso'=>$this->input->post('cboidCurso')
+			
+			'id'=>$this->uri->segment(3)
+			);
+
+		$this->inscripciones_model->update($data);
 	}
 	
 	public function delete_get()
@@ -50,9 +61,7 @@ class Inscripciones extends REST_Controller {
 
 	public function delete_post()
 	{
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$this->inscripciones_model->delete($id);
 	}
 }	
 ?>
