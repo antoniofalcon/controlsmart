@@ -2,9 +2,9 @@
 <?= form_open("cursos/create",$attr);?>
 <?php
 	$options=array();
-	foreach ($maestros as $value) {
-		$options[$value->idMaestro]=$value->maestro;
-	}
+	foreach ($cursos as $value) {
+		$options[$value->idMaestros]=$value->maestro;
+	}	
 	$curso= array(
 		'name'=>'txtCurso',
 		'id'=>'txtCurso',

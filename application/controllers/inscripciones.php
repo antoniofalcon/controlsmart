@@ -7,8 +7,10 @@ class Inscripciones extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
-        $this->load->model('inscripciones_model');
-        $this->load->helper('form');
+        $this->load->model{'inscripciones_model'};
+        $this->load->model{'clientes_model'};
+        $this->load->model{'cursos_model'};
+        
     }
 	public function index_get()
 	{
@@ -19,49 +21,53 @@ class Inscripciones extends REST_Controller {
 
 	public function create_get()
 	{
+		$data=array (
+			'clientes'=>$this->clientes_model->getAll(),
+			'cursos'=>$this->cursos_model->getAll());
 		$data['title']= 'Inscripciones';
 		$this->load->view('header',$data);
+		$this->load->view('spa/inscripciones/create',$data);
 		$this->load->view('footer');
 	}
 	public function create_post()
 	{
 		$data['title']= 'Inscripciones';
-		$data = array(
-			'idCliente'=>$this->input->post('cboidCliente'),
-			'idCurso'=>$this->input->post('cboidCurso')
-			);
-
-		$this->inscripciones_model->create($data);
+		$this->load->view('header',$data);
+		$this->load->view('footer');
 	}
 	public function edit_get()
 	{
+		$data=array (
+			'clientes'=>$this->clientes_model->getAll(),
+			'cursos'=>$this->cursos_model->getAll());
+		$data['id']= $this->uri->segment(3);
 		$data['title']= 'Inscripciones';
 		$this->load->view('header',$data);
+		$this->load->view('spa/inscripciones/create',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
 	{
 		$data['title']= 'Inscripciones';
-		$data = array(
-			'idCliente'=>$this->input->post('cboidCliente'),
-			'idCurso'=>$this->input->post('cboidCurso')
-			
-			'id'=>$this->uri->segment(3)
-			);
-
-		$this->inscripciones_model->update($data);
+		$this->load->view('header',$data);
+		$this->load->view('footer');
 	}
 	
-	public function delete_get()
+	public function delete_get($id)
 	{
-		$data['title']= 'Inscripciones';
+		$data['id']= $id;
+		$data['datos'] = $this->inscripciones_model->getById($data['id']);
+		$data['title']= 'incripciones';
 		$this->load->view('header',$data);
+		$this->load->view('/spa/incripciones/delete',$data);
 		$this->load->view('footer');
 	}
 
 	public function delete_post()
 	{
-		$this->inscripciones_model->delete($id);
+		$data['title']= 'Inscripciones';
+		$this->load->view('header',$data);
+		$this->load->view('footer');
 	}
 }	
 ?>
