@@ -44,7 +44,9 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-    $('#txtHoraInicio').timepicker({});
+    $('#txtHoraInicio').timepicker({
+    	scrollbar: true
+    });
 });
 </script>
 

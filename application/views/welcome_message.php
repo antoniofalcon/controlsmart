@@ -2,8 +2,9 @@
 	'id'=>'formLogin',
 	'class'=>'form-horizontal"'
 ); ?>
-<br><br><br><br>
+
 <div id="divLogin" class="col-sm-5">
+	<h3 class="headers">Iniciar Sesión</h3>
 <?= form_open("/Acceso/login",$attr);?>
 <?php
 	$cuenta= array(
@@ -34,5 +35,31 @@
 <?=form_button($btnAttr); ?>
 <!--<?=form_button($btnAttr2); ?>-->
 <?=form_close();?>
-<br>
 </div>
+<style type="text/css">
+	body{
+		background-color: #FAFAFA;
+		padding-top: 100px;
+	}
+	#divLogin{
+		background-color: #fff;
+		padding: 5px 30px 30px 30px;
+		border-radius: 8px;
+		border: 1px solid rgba(8, 8, 8, 0.12);
+		z-index: 200px;	
+	}
+	#divLogin input{
+		
+		padding: 20px;
+		font-size: 17px;
+		
+	}
+	#divLogin button{
+		
+		padding: 10px;
+		
+	}
+	#divLogin .headers{
+		color: #208884;
+	}
+</style>

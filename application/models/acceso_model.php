@@ -8,7 +8,7 @@
 			$this->db->where('cuenta',$data['cuenta']);
 			$this->db->where('pswd',$data['pswd']);
 			$q= $this->db->get('usuarios');
-			return $q;
+			return $q->result();
 		}
 		public function getAll(){
 			$q = $this->db->get('usuarios');
@@ -30,13 +30,22 @@
  			$this->db->insert('usuarios',$datos);
  		}	
 		public function update($data){
-			$datos= array(
- 				'usuario'=>$data['usuario'],
- 				'cuenta'=> $data['cuenta'],
- 				'pswd'=>$data['pswd'],
- 				'cPswd'=>$data['cPswd'],
- 				'nivel'=>$data['nivel']
- 			);
+			if($data['pswd'] == "d41d8cd98f00b204e9800998ecf8427e" and
+			$data['cPswd'] == "d41d8cd98f00b204e9800998ecf8427e"){
+				$datos= array(
+	 				'usuario'=>$data['usuario'],
+	 				'cuenta'=> $data['cuenta'],
+	 				'nivel'=>$data['nivel']
+ 				);
+			}else{
+				$datos= array(
+	 				'usuario'=>$data['usuario'],
+	 				'cuenta'=> $data['cuenta'],
+	 				'pswd'=>$data['pswd'],
+	 				'cPswd'=>$data['cPswd'],
+	 				'nivel'=>$data['nivel']
+	 			);
+			}
  			$this->db->where('idUsuario',$data['id']);
 			$q= $this->db->update('usuarios',$datos);
  		}

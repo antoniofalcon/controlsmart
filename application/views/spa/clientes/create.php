@@ -1,4 +1,3 @@
-
 <?php $attr= array('id'=>'formCliente'); ?>
 <?= form_open("clientes/create",$attr);?>
 <?php
