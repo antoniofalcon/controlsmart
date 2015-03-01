@@ -2,15 +2,14 @@
 <?= form_open("cursos/create",$attr);?>
 <?php
 	$options=array();
-	foreach ($maestros as $value) {
-		$options[$value->idMaestro]=$value->maestro;
-	}
+	foreach ($cursos as $value) {
+		$options[$value->idMaestros]=$value->maestro;
+	}	
 	$curso= array(
 		'name'=>'txtCurso',
 		'id'=>'txtCurso',
 		'value'=>set_value('txtCurso'));
 	$horaInicio= array(
-		'class'=>'form-control',
 		'name'=>'txtHoraInicio',
 		'id'=>'txtHoraInicio',
 		'value'=>set_value('txtHoraInicio'));
@@ -24,17 +23,13 @@
 <br>
 <?= form_label('Curso: ','txtCurso');?>
 <?= form_input($curso); ?>
-<br>
-<div class="col-sm-6">
-<div class="form-group">
-<div class="input-group date" id="horaInicio">
+<br><br>
 
+<?= form_label('Hora de inicio','horaInicio');?>
 <?= form_input($horaInicio); ?>
-<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-</div>
-</div>
-</div>
-<br>
+
+
+<br><br><br><br>
 <?= form_label('Hora de Fin: ','txtHoraSalida');?>
 <?= form_input($horaSalida); ?>
 <br>
@@ -45,9 +40,29 @@
 	
 	$(document).ready(function(){
     $('#txtHoraInicio').timepicker({
+<<<<<<< HEAD
     	scrollbar: true
     });
 });
+=======
+    	timeFormat: 'HH:mm:ss',
+    	startTime: new Date(0,0,0,14,0,0),
+    	interval: 60,
+    	scrollbar: true,
+    	maxHour: 20
+    });
+
+    $('#txtHoraSalida').timepicker({
+    	timeFormat: 'HH:mm:ss',
+    	startTime: new Date(0,0,0,14,0,0),
+    	interval: 60,
+    	scrollbar: true,
+    	maxHour: 20
+    });
+}
+
+);
+>>>>>>> origin/master
 </script>
 
 
