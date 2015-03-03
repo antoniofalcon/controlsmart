@@ -53,7 +53,7 @@ class Inscripciones extends REST_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function delete_get()
+	public function delete_get($id)
 	{
 		$data['id']= $id;
 		$data['datos'] = $this->inscripciones_model->getById($data['id']);

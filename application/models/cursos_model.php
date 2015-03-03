@@ -67,7 +67,7 @@
 
 			return $q;
 		}
- 	public function getAllJoin()
+ 		public function getAllJoin()
 		{
 
 			$this->db->select('maestro,idCurso,curso,horaInicio,horaSalida');
