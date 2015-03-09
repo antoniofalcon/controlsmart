@@ -40,11 +40,6 @@
 	
 	$(document).ready(function(){
     $('#txtHoraInicio').timepicker({
-<<<<<<< HEAD
-    	scrollbar: true
-    });
-});
-=======
     	timeFormat: 'HH:mm:ss',
     	startTime: new Date(0,0,0,14,0,0),
     	interval: 60,
@@ -62,7 +57,6 @@
 }
 
 );
->>>>>>> origin/master
 </script>
 
 
