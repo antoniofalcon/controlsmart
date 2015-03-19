@@ -15,8 +15,8 @@ class Pagos extends REST_Controller {
 	public function index_get()
 	{
 		$data['title']= 'Pagos';
-		//$this->load->view('header',$data);
-		$this->load->view('pagos/create');
+		$this->load->view('header',$data);
+		$this->load->view('spa/pagos/index');
 		$this->load->view('footer');
 	}
 
