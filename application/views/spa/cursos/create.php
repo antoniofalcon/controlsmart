@@ -2,8 +2,8 @@
 <?= form_open("cursos/create",$attr);?>
 <?php
 	$options=array();
-	foreach ($cursos as $value) {
-		$options[$value->idMaestros]=$value->maestro;
+	foreach ($maestros as $value) {
+		$options[$value->idMaestro]=$value->maestro;
 	}	
 	$curso= array(
 		'name'=>'txtCurso',

@@ -70,7 +70,7 @@
 				'hora'=>$data['hora'] 				
  			);
 			$this->db->where('idPago',$data['id']);
- 			$this->db->update('pagos',$datos)
+ 			$this->db->update('pagos',$datos);
  		}
  		public function delete($id){
  			$this->db->where('idPago',$id);

@@ -10,6 +10,7 @@ class Inscripciones extends REST_Controller {
         $this->load->model('inscripciones_model');
         $this->load->model('clientes_model');
         $this->load->model('cursos_model');
+        $this->load->helper('form');
         
     }
 	public function index_get()
