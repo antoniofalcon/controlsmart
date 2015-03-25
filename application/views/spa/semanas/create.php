@@ -13,9 +13,9 @@
 	?>
 <?= form_label('Semana: ','txtSemana');?>
 <?= form_input($semana); ?>
-<br>
+<?= form_error('txtSemana'); ?>
 <?= form_label('Costo: ','txtCosto');?>
 <?= form_input($costo); ?>
-<br>
+<?= form_error('txtCosto'); ?>
 <?=form_submit('','Guardar'); ?>
 <?=form_close();?>

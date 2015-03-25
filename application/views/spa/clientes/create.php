@@ -12,9 +12,9 @@
 ?>
 <?= form_label('Nombre: ','txtNombre');?>
 <?= form_input($nombre); ?>
-<br>
+<?= form_error('txtNombre'); ?>
 <?= form_label('Teléfono: ','txtTelefono');?>
 <?= form_input($telefono); ?>
-<br>
+<?= form_error('txttelefono'); ?>
 <?=form_submit('','Guardar'); ?>
 <?=form_close();?>

@@ -25,20 +25,17 @@
 ?>
 <?= form_label('Nombre del Maestro: ','cboMaestros');?>
 <?= form_dropdown('cboMaestros',$options); ?>
-<br>
+<?= form_error('cboMaestros'); ?>
 <?= form_label('Curso: ','txtCurso');?>
 <?= form_input($curso); ?>
-<br><br>
-
-<?= form_label('Hora de inicio','horaInicio');?>
+<?= form_error('txtCurso'); ?>
+<?= form_label('Hora de inicio','txtHoraInicio');?>
 <?= form_input($horaInicio); ?>
-
-
-<br><br><br><br>
+<?= form_error('txtNombre'); ?>
 <?= form_label('Hora de Fin: ','txtHoraSalida');?>
 <?= form_input($horaSalida); ?>
-<br>
-<?=form_submit('','Guardar'); ?>
+<?= form_error('txtHoraSalida'); ?>
+<?=form_submit('','Editar'); ?>
 <?=form_close();?>
 
 <script type="text/javascript">

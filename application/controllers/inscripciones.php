@@ -10,6 +10,9 @@ class Inscripciones extends REST_Controller {
         $this->load->model('inscripciones_model');
         $this->load->model('clientes_model');
         $this->load->model('cursos_model');
+        $this->load->helper('url');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         
     }
 	public function index_get()
@@ -31,9 +34,17 @@ class Inscripciones extends REST_Controller {
 	}
 	public function create_post()
 	{
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+
+		if ($this->form_validation->run('inscripciones') == FALSE)
+		{
+			$this->create_get();
+		}
+		else
+		{
+			$data = $this->getMethodPost();
+			$this->inscripciones_model->create($data);
+			redirect('/inscripciones');
+		}
 	}
 	public function edit_get()
 	{
@@ -48,26 +59,39 @@ class Inscripciones extends REST_Controller {
 	}
 	public function edit_post()
 	{
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		if ($this->form_validation->run('inscripciones') == FALSE)
+		{
+			$this->edit_get();
+		}
+		else
+		{
+			$data = $this->getMethodPost();
+			$data['id'] = $this->uri->segment(3);					
+			$this->inscripciones_model->update($data);
+			redirect('/inscripciones');
+		}
 	}
 	
 	public function delete_get($id)
 	{
 		$data['id']= $id;
 		$data['datos'] = $this->inscripciones_model->getById($data['id']);
-		$data['title']= 'incripciones';
+		$data['title']= 'Incripciones';
 		$this->load->view('header',$data);
 		$this->load->view('/spa/incripciones/delete',$data);
 		$this->load->view('footer');
 	}
 
-	public function delete_post()
+	public function delete_post($id)
 	{
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		$this->inscripciones_model->delete($id);
+	}
+	private function getMethodPost(){
+		$data = array(
+			'idCliente'=>$this->input->post('cboCliente'),
+			'idCurso'=>$this->input->post('cboCurso')
+			);
+		return $data;
 	}
 }	
 ?>

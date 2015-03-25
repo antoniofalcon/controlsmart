@@ -9,6 +9,9 @@ class Maestros extends REST_Controller {
         parent::__construct();
         $this->load->model('maestros_model');
         $this->load->helper('form');
+        $this->load->helper('url');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 	public function index_get()
 	{
@@ -28,15 +31,14 @@ class Maestros extends REST_Controller {
 	}
 	public function create_post()
 	{
-		$data['title']= 'Maestros';
-
-		$data = array(
-			'nombre'=>$this->input->post('txtNombre'),
-			'direccion'=>$this->input->post('txtDireccion'),
-			'telefono'=>$this->input->post('txtTelefono')
-			);
-
-		$this->maestros_model->create($data);
+		if ($this->form_validation->run('maestros') == FALSE)
+		{
+			$this->create_get();
+		}else{
+			$data = $this->getMethodPost();
+			$this->maestros_model->create($data);
+			redirect('/maestros');
+		}
 	}
 	public function edit_get()
 	{
@@ -49,14 +51,15 @@ class Maestros extends REST_Controller {
 	}
 	public function edit_post()
 	{
-		$data = array(
-			'nombre'=>$this->input->post('txtNombre'),
-			'direccion'=>$this->input->post('txtDireccion'),
-			'telefono'=>$this->input->post('txtTelefono'),
-			'id'=>$this->uri->segment(3)
-			);
-
-		$this->maestros_model->update($data);
+		if ($this->form_validation->run('maestros_edit') == FALSE)
+		{
+			$this->edit_get();
+		}else{
+			$data = $this->getMethodPost();
+			$data['id'] = $this->uri->segment(3);	
+			$this->maestros_model->update($data);
+			redirect('/maestros');
+		}
 	}
 	
 	public function delete_get($id)
@@ -72,6 +75,16 @@ class Maestros extends REST_Controller {
 	public function delete_post($id)
 	{
 		$this->maestros_model->delete($id);
+	}
+
+	private function getMethodPost(){
+		$data = array(
+			'nombre'=>$this->input->post('txtNombre'),
+			'direccion'=>$this->input->post('txtDireccion'),
+			'telefono'=>$this->input->post('txtTelefono')
+			);
+
+		return $data;
 	}
 }	
 ?>

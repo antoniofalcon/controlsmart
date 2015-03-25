@@ -1,0 +1,174 @@
+<?php
+$config = array(
+	'acceso' => array(
+				array(
+					'field'=>'txtNombre',
+					'label'=>'Nombre',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtCuenta',
+					'label'=>'Cuenta',
+					'rules'=>'required|is_unique[usuarios.cuenta]'
+				),
+				array(
+					'field'=>'txtPswd',
+					'label'=>'Contraseña',
+					'rules'=>'required|matches[txtCPswd]'
+				),
+				array(
+					'field'=>'txtCPswd',
+					'label'=>'Confirmar Contraseña',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'cboNivel',
+					'label'=>'Nivel',
+					'rules'=>'required'
+				),
+			),
+	'acceso_edit' => array(
+				array(
+					'field'=>'txtNombre',
+					'label'=>'Nombre',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtCuenta',
+					'label'=>'Cuenta',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtPswd',
+					'label'=>'Contraseña',
+					'rules'=>'matches[txtCPswd]'
+				),
+				array(
+					'field'=>'txtCPswd',
+					'label'=>'Confirmar Contraseña',
+					'rules'=>'matches[txtPswd]'
+				),
+				array(
+					'field'=>'cboNivel',
+					'label'=>'Nivel',
+					'rules'=>'required'
+				),
+			),
+	'clientes' => array(
+				array(
+					'field'=>'txtNombre',
+					'label'=>'Nombre',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtTelefono',
+					'label'=>'Telefono',
+					'rules'=>'required|numeric'
+				)
+			),
+	'cursos' => array(
+				array(
+					'field'=>'txtCurso',
+					'label'=>'Curso',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'cboMaestros',
+					'label'=>'Maestro',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtHoraInicio',
+					'label'=>'Hora de Inicio',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtHoraSalida',
+					'label'=>'CHora de Salida',
+					'rules'=>'required'
+				)
+			),
+	'maestros' => array(
+				array(
+					'field'=>'txtNombre',
+					'label'=>'Nombre',
+					'rules'=>'required|is_unique[maestros.maestro]'
+				),
+				array(
+					'field'=>'txtDireccion',
+					'label'=>'Direccíon',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtTelefono',
+					'label'=>'Telefono',
+					'rules'=>'required|numeric'
+				)
+			),
+	'maestros_edit' => array(
+				array(
+					'field'=>'txtNombre',
+					'label'=>'Nombre',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtDireccion',
+					'label'=>'Direccíon',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtTelefono',
+					'label'=>'Teléfono',
+					'rules'=>'required|numeric'
+				)
+			),
+	'semanas' => array(
+				array(
+					'field'=>'txtSemana',
+					'label'=>'Semana',
+					'rules'=>'required|is_unique[semanas.semana]'
+				),
+				array(
+					'field'=>'txtCosto',
+					'label'=>'Costo',
+					'rules'=>'required'
+				)
+			),
+	'semanas_edit' => array(
+				array(
+					'field'=>'txtSemana',
+					'label'=>'Semana',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'txtCosto',
+					'label'=>'Costo',
+					'rules'=>'required'
+				)
+			),
+	'inscripciones' => array(
+				array(
+					'field'=>'cboCurso',
+					'label'=>'Curso',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'cboCliente',
+					'label'=>'Cliente',
+					'rules'=>'required'
+				)
+			),
+	'pagos' => array(
+				array(
+					'field'=>'cboCliente',
+					'label'=>'Cliente',
+					'rules'=>'required'
+				),
+				array(
+					'field'=>'cboSemana',
+					'label'=>'Semana',
+					'rules'=>'required'
+				)
+			),
+);
+?>

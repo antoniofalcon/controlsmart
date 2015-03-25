@@ -28,18 +28,26 @@
 ?>
 <?= form_label('Nombre: ','txtNombre');?>
 <?= form_input($nombre); ?>
-<br>
+<?= form_error('txtNombre'); ?>
 <?= form_label('Cuenta: ','txtCuenta');?>
 <?= form_input($cuenta); ?>
-<br>
+<?= form_error('txtCuenta'); ?>
 <?= form_label('Contraseña: ','txtPswd');?>
 <?= form_input($pswd); ?>
-<br>
+<?= form_error('txtPswd'); ?>
 <?= form_label('Confirmar Contraseña: ','txtCPswd');?>
 <?= form_input($cPswd); ?>
-<br>
+<?= form_error('txtCPswd'); ?>
 <?= form_label('Nivel: ');?>
-<?= form_dropdown('cboNivel',$options); ?>
-<br>
+<?= form_dropdown('cboNivel',$options,$datos->result()[0]->nivel); ?>
+<?= form_error('cboNivel'); ?>
 <?=form_submit('','Editar'); ?>
 <?=form_close();?>
+
+<style type="text/css">
+.error{
+	color: red;
+}
+
+input{ display: block;}
+</style>

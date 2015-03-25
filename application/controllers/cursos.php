@@ -9,6 +9,9 @@ class Cursos extends REST_Controller {
         parent::__construct();
         $this->load->model('cursos_model');
         $this->load->helper('form');
+        $this->load->helper('url');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 	public function index_get()
 	{
@@ -24,23 +27,23 @@ class Cursos extends REST_Controller {
 		$this->load->model('maestros_model');
 		$data=array (
 			'maestros'=>$this->maestros_model->getAll());
-		$data['title']= 'cursos';
+		$data['title']= 'Cursos';
 		$this->load->view('header',$data);
 		$this->load->view('/spa/cursos/create',$data);
 		$this->load->view('footer');
 	}
 	public function create_post()
 	{
-		$data['title']= 'cursos';
-
-		$data = array(
-			'idMaestro'=>$this->input->post('cboMaestros'),
-			'curso'=>$this->input->post('txtCurso'),
-			'horaInicio'=>$this->input->post('txtHoraInicio'),
-			'horaSalida'=>$this->input->post('txtHoraSalida')
-			);
-
-		$this->cursos_model->create($data);
+		if ($this->form_validation->run('cursos') == FALSE)
+		{
+			$this->create_get();
+		}
+		else
+		{
+			$data = $this->getMethodPost();
+			$this->cursos_model->create($data);
+			redirect('/cursos');
+		}
 	}
 	public function edit_get()
 	{
@@ -49,22 +52,24 @@ class Cursos extends REST_Controller {
 			'maestros'=>$this->maestros_model->getAll());
 		$data['id']= $this->uri->segment(3);
 		$data['datos'] = $this->cursos_model->getById($data['id']);
-		$data['title']= 'cursos';
+		$data['title']= 'Cursos';
 		$this->load->view('header',$data);
 		$this->load->view('/spa/cursos/edit',$data);
 		$this->load->view('footer');
 	}
 	public function edit_post()
 	{ 
-		$data = array(
-			'idMaestro'=>$this->input->post('cboMaestros'),
-			'curso'=>$this->input->post('txtCurso'),
-			'horaInicio'=>$this->input->post('txtHoraInicio'),
-			'horaSalida'=>$this->input->post('txtHoraSalida'),
-			'id'=>$this->uri->segment(3)
-			);
-
-		$this->cursos_model->update($data);
+		if ($this->form_validation->run('cursos') == FALSE)
+		{
+			$this->edit_get();
+		}
+		else
+		{
+			$data = $this->getMethodPost();
+			$data['id'] = $this->uri->segment(3);					
+			$this->cursos_model->update($data);
+			redirect('/cursos');
+		}
 	}
 	
 	public function delete_get($id)
@@ -80,6 +85,16 @@ class Cursos extends REST_Controller {
 	public function delete_post($id)
 	{
 		$this->cursos_model->delete($id);
+	}
+
+	private function getMethodPost(){
+		$data = array(
+			'idMaestro'=>$this->input->post('cboMaestros'),
+			'curso'=>$this->input->post('txtCurso'),
+			'horaInicio'=>$this->input->post('txtHoraInicio'),
+			'horaSalida'=>$this->input->post('txtHoraSalida')
+			);
+		return $data;
 	}
 }	
 ?>

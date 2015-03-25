@@ -9,6 +9,9 @@ class Clientes extends REST_Controller {
         parent::__construct();
         $this->load->model('clientes_model');
         $this->load->helper('form');
+        $this->load->helper('url');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
     
 	public function index_get()
@@ -29,14 +32,14 @@ class Clientes extends REST_Controller {
 	}
 	public function create_post()
 	{
-		$data['title']= 'Clientes';
-
-		$data = array(
-			'cliente'=>$this->input->post('txtNombre'),
-			'celular'=>$this->input->post('txtTelefono')
-			);
-
-		$this->clientes_model->create($data);
+		if ($this->form_validation->run('clientes') == FALSE)
+		{
+			$this->create_get();
+		}else{
+			$data = $this->getMethodPost();
+			$this->clientes_model->create($data);
+			redirect('/clientes');
+		}
 	}
 	public function edit_get()
 	{
@@ -50,14 +53,14 @@ class Clientes extends REST_Controller {
 	}
 	public function edit_post()
 	{
-
-		$data = array(
-			'cliente'=>$this->input->post('txtNombre'),
-			'celular'=>$this->input->post('txtTelefono'),
-			'id'=>$this->uri->segment(3)
-			);
-
+		if ($this->form_validation->run('clientes') == FALSE)
+		{
+			$this->edit_get();
+		}else{
+		$data = $this->getMethodPost();
+		$data['id'] = $this->uri->segment(3);		
 		$this->clientes_model->update($data);
+		redirect('/clientes');
 	}
 	
 	public function delete_get($id)
@@ -75,6 +78,13 @@ class Clientes extends REST_Controller {
 		
 		$this->clientes_model->delete($id);
 
+	}
+	private function getMethodPost(){
+		$data = array(
+				'cliente'=>$this->input->post('txtNombre'),
+				'celular'=>$this->input->post('txtTelefono')
+				);
+		return $data;
 	}
 }	
 ?>

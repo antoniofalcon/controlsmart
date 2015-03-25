@@ -17,12 +17,12 @@
 	?>
 <?= form_label('Nombre: ','txtNombre');?>
 <?= form_input($nombre); ?>
-<br>
+<?= form_error('txtNombre'); ?>
 <?= form_label('Dirección: ','txtDireccion');?>
 <?= form_input($direccion); ?>
-<br>
+<?= form_error('txtDireccion'); ?>
 <?= form_label('Teléfono: ','txtTelefono');?>
 <?= form_input($telefono); ?>
-<br>
+<?= form_error('txtTelefono'); ?>
 <?=form_submit('','Guardar'); ?>
 <?=form_close();?>

@@ -31,9 +31,9 @@
 			$q= $this->db->update('inscritos',$datos);
 
  		}
- 		public function delete($data){
- 			$this->db->where('idInscritos',$data['id']);
-			$q= $this->db->update('inscritos',$datos);
+ 		public function delete($id){
+ 			$this->db->where('idInscritos',$id]);
+			$this->db->delete('inscritos');
 
 
  		}

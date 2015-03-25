@@ -7,9 +7,13 @@ class Acceso extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
+        //Load resources of CI
         $this->load->model('acceso_model');
         $this->load->helper('security');
         $this->load->helper('form');
+        $this->load->helper('url');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
     
 	public function index_get()
@@ -29,10 +33,17 @@ class Acceso extends REST_Controller {
 		$this->load->view('footer');
 	}
 	public function create_post()
-	{
-		$data['title']= 'Usuarios';
-		$data = $this->getMethodPost();
-		$this->acceso_model->create($data);
+	{	
+		if ($this->form_validation->run('acceso') == FALSE)
+		{
+			$this->create_get();
+		}
+		else
+		{
+			$data = $this->getMethodPost();
+			$this->acceso_model->create($data);
+			redirect('/acceso');
+		}
 	}
 	public function edit_get()
 	{
@@ -45,9 +56,17 @@ class Acceso extends REST_Controller {
 	}
 	public function edit_post()
 	{
-		$data = $this->getMethodPost();		
-		$data['id'] = $this->uri->segment(3);
-		$this->acceso_model->update($data);
+		if ($this->form_validation->run('acceso_edit') == FALSE)
+		{
+			$this->edit_get();
+		}
+		else
+		{
+			$data = $this->getMethodPost();
+			$data['id'] = $this->uri->segment(3);					
+			$this->acceso_model->update($data);
+			redirect('/acceso');
+		}
 	}
 	
 	public function delete_get($id)

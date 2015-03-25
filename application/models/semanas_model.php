@@ -18,7 +18,7 @@
 		public function create($data){
 			$datos= array(
  				'semana'=>$data['semana'],
- 				'sosto'=> $data['costo']	
+ 				'costo'=> $data['costo']	
  			);
  			$this->db->insert('semanas',$datos);
 

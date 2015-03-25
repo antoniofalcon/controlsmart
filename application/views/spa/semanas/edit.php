@@ -12,10 +12,10 @@
 	
 ?>
 <?= form_label('Semana: ','txtSemana');?>
-<?= form_input($Semana); ?>
-<br>
+<?= form_input($semana); ?>
+<?= form_error('txtSemana'); ?>
 <?= form_label('Costo: ','txtCosto');?>
 <?= form_input($costo); ?>
-<br>
+<?= form_error('txtCosto'); ?>
 <?=form_submit('','Editar'); ?>
 <?=form_close();?>
