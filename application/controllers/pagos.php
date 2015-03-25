@@ -7,6 +7,7 @@ class Pagos extends REST_Controller {
     {
         // Construct our parent class
         parent::__construct();
+<<<<<<< HEAD
 		$this->load->model('pagos_model');
 		$this->load->model('semanas_model');
 		$this->load->model('clientes_model');
@@ -14,6 +15,11 @@ class Pagos extends REST_Controller {
         $this->load->helper('date');
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+=======
+        $this->load->helper('form');
+        $this->load->helper('date');
+        $this->load->model('pagos_model');
+>>>>>>> origin/master
         
     }
 	public function index_get()
@@ -21,18 +27,27 @@ class Pagos extends REST_Controller {
 		$data['datos'] = $this->pagos_model->getAllJoin();
 		$data['title']= 'Pagos';
 		$this->load->view('header',$data);
+<<<<<<< HEAD
 		$this->load->view('/spa/pagos/index',$data);
+=======
+		$this->load->view('spa/pagos/index');
+>>>>>>> origin/master
 		$this->load->view('footer');
 	}
 
 	public function create_get()
 	{
 		$data['title']= 'Pagos';
+<<<<<<< HEAD
 		$data=array (
 			'clientes'=>$this->clientes_model->getAll(),
 			'semanas'=>$this->semanas_model->getAll());
 		$this->load->view('header',$data);
 		$this->load->view('spa/pagos/create',$data);
+=======
+		//$this->load->view('header',$data);
+		$this->load->view('/spa/pagos/create');
+>>>>>>> origin/master
 		$this->load->view('footer');
 	}
 	public function create_post()

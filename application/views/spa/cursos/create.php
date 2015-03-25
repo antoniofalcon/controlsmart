@@ -35,7 +35,29 @@
 
 <script type="text/javascript">
 	
+<<<<<<< HEAD
 	//code for datepicker, see github 
+=======
+	$(document).ready(function(){
+    $('#txtHoraInicio').timepicker({
+    	timeFormat: 'HH:mm:ss',
+    	startTime: new Date(0,0,0,14,0,0),
+    	interval: 60,
+    	scrollbar: true,
+    	maxHour: 20
+    });
+
+    $('#txtHoraSalida').timepicker({
+    	timeFormat: 'HH:mm:ss',
+    	startTime: new Date(0,0,0,14,0,0),
+    	interval: 60,
+    	scrollbar: true,
+    	maxHour: 20
+    });
+}
+
+);
+>>>>>>> origin/master
 </script>
 
 
