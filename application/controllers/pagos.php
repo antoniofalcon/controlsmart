@@ -90,8 +90,8 @@ class Pagos extends REST_Controller {
 		$datestring = "%Y-%m-%d";
 		$hourstring = "%H:%i:%s";
 		$data = array(
-			'idCliente'=>$this->input->post('cboCliente'),
-			'idSemana'=>$this->input->post('cboSemana'),
+			'idCliente'=>$this->input->post('cboClientes'),
+			'idSemana'=>$this->input->post('cboSemanas'),
 			'fecha'=>mdate($datestring, $time),
 			'hora'=>mdate($hourstring, $time)
 			);

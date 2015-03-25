@@ -17,10 +17,9 @@
 ?>
 <?= form_label('Nombre del Cliente: ','cboClientes');?>
 <?= form_dropdown('cboClientes',$options1); ?>
-<br>
+<?= form_error('cboClientes'); ?>
 <?= form_label('Semana: ','cboSemanas');?>
 <?= form_dropdown('cboSemanas',$options2); ?>
-<br><br>
-
-<?=form_submit('','Guardar'); ?>
+<?= form_error('cboSemanas'); ?>
+<?=form_submit('','Editar'); ?>
 <?=form_close();?>
