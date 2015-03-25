@@ -40,7 +40,7 @@
 
 <script type="text/javascript">
 	
-	$(document).ready(function(){
+$(document).ready(function(){
     $('#txtHoraInicio').timepicker({
     	timeFormat: 'HH:mm:ss',
     	startTime: new Date(0,0,0,14,0,0),
@@ -56,7 +56,5 @@
     	scrollbar: true,
     	maxHour: 20
     });
-}
-
-);
+});
 </script>

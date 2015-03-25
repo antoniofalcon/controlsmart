@@ -26,7 +26,7 @@
 <?= form_error('txtCurso'); ?>
 <?= form_label('Hora de inicio','txtHoraInicio');?>
 <?= form_input($horaInicio); ?>
-<?= form_error('txtNombre'); ?>
+<?= form_error('txtHorainicio'); ?>
 <?= form_label('Hora de Fin: ','txtHoraSalida');?>
 <?= form_input($horaSalida); ?>
 <?= form_error('txtHoraSalida'); ?>
@@ -35,10 +35,7 @@
 
 <script type="text/javascript">
 	
-<<<<<<< HEAD
-	//code for datepicker, see github 
-=======
-	$(document).ready(function(){
+$(document).ready(function(){
     $('#txtHoraInicio').timepicker({
     	timeFormat: 'HH:mm:ss',
     	startTime: new Date(0,0,0,14,0,0),
@@ -54,10 +51,7 @@
     	scrollbar: true,
     	maxHour: 20
     });
-}
-
-);
->>>>>>> origin/master
+});
 </script>
 
 
