@@ -1,5 +1,5 @@
 <div id="listaClientes">
-<table class="table table-bordered">
+<table class="table table-striped">
 	<tr><th>Nombre</th><th>Cuenta</th><th>Nivel</th><th>Acciones</th></tr>
 <?php
 	foreach ($datos as $value) {

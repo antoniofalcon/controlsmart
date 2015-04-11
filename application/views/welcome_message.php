@@ -1,3 +1,4 @@
+<!--
 <?php $attr= array(
 	'id'=>'formLogin',
 	'class'=>'form-horizontal"'
@@ -34,7 +35,8 @@
 <br>
 <?=form_button($btnAttr); ?>
 <!--<?=form_button($btnAttr2); ?>-->
-<?=form_close();?>
+<!--<?=form_close();?>
+
 </div>
 <style type="text/css">
 	body{
@@ -63,3 +65,4 @@
 		color: #208884;
 	}
 </style>
+ -->

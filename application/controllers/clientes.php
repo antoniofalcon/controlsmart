@@ -61,6 +61,7 @@ class Clientes extends REST_Controller {
 		$data['id'] = $this->uri->segment(3);		
 		$this->clientes_model->update($data);
 		redirect('/clientes');
+		}
 	}
 	
 	public function delete_get($id)

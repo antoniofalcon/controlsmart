@@ -32,7 +32,7 @@
 
  		}
  		public function delete($id){
- 			$this->db->where('idInscritos',$id]);
+ 			$this->db->where('idInscritos',[$id]);
 			$this->db->delete('inscritos');
 
 
