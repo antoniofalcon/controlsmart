@@ -41,6 +41,8 @@
             <li><a href="/controlsmart/semanas/index" id=""><span class="icon-open-book"> </span>Semanas</a></li>
             <li><a href="/controlsmart/acceso/index" id=""><span class="icon-user"> </span>Usuarios</a></li>
             <li><a href="/controlsmart/pagos/index" id=""><span class=" icon-credit"> </span>Pagos</a></li>
+             <li><a href="/controlsmart/reportes/adeudos" id=""><span class=" icon-credit"> </span>Adeudos</a></li>
+
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="show">
