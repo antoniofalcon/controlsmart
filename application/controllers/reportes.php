@@ -45,13 +45,13 @@ class Reportes extends REST_Controller {
 
 		$data['title']= 'Reporte de Pagos';
 		$name = $this->input->post('txtBuscar');
-		$data = $this->clientes_model->getByName2($name);
+		$data = $this->clientes_model->getByName($name);
 
 		$data['semanas'] = $this->reportes_model->pagos($data[0]->idCliente);
 		$data['cant_semanas'] = $this->reportes_model->getSemanas();
 		$data['cantidad'] = $this->reportes_model->getCantidad($data[0]->idCliente);
 		$data['fecha'] = mdate($datestring, $time);
-		$data['datos'] = $this->clientes_model->getByName2($name);
+		$data['datos'] = $this->clientes_model->getByName($name);
 		$this->load->view('header',$data);
 		$this->load->view('/spa/reportes/reporte_pagos',$data);
 		$this->load->view('footer');

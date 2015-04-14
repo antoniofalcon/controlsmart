@@ -1,4 +1,4 @@
-	<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
@@ -20,15 +20,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		
-		$this->load->helper('form');
 		$this->load->view('login');
-	}
-	public function administrar()
-	{
-		$this->load->helper('form');
-		$this->load->view('header');
-		$this->load->view('welcome');
-		$this->load->view('footer');
+
 	}
 }
 

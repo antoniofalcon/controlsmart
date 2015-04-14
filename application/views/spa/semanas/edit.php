@@ -26,7 +26,7 @@
 	
 ?>
 <?= form_label('Semana: ','txtSemana');?>
-<?= form_input($semana); ?>
+<?= form_input($Semana); ?>
 <?= form_error('txtSemana'); ?><br>
 <?= form_label('Costo: ','txtCosto');?>
 <?= form_input($costo); ?>

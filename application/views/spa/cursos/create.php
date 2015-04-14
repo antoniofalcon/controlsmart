@@ -6,7 +6,7 @@
 	$options=array();
 	foreach ($maestros as $value) {
 		$options[$value->idMaestro]=$value->maestro;
-	}	
+	}
 	$curso= array(
 		'class' => 'form-control',
 		'name'=>'txtCurso',
@@ -52,22 +52,22 @@
 </div>
 
 <script type="text/javascript">
-	
+
 $(document).ready(function(){
-    $('#txtHoraInicio').timepicker({
-    	timeFormat: 'HH:mm:ss',
-    	startTime: new Date(0,0,0,14,0,0),
+   $('#txtHoraInicio').timepicker({
+    	timeFormat: 'h:mm p',
+    	minTime: new Date(0, 0, 0, 14, 0, 0),
+      maxTime: new Date(0, 0, 0, 20, 0, 0),
     	interval: 60,
     	scrollbar: true,
-    	maxHour: 20
     });
 
     $('#txtHoraSalida').timepicker({
-    	timeFormat: 'HH:mm:ss',
-    	startTime: new Date(0,0,0,14,0,0),
+    	timeFormat: 'h:mm p',
+    	minTime: new Date(0, 0, 0, 14, 0, 0),
+      maxTime: new Date(0, 0, 0, 20, 0, 0),
     	interval: 60,
     	scrollbar: true,
-    	maxHour: 20
     });
 });
 </script>

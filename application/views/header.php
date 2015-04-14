@@ -7,8 +7,8 @@
     <link href="/controlsmart/assets/vendor/css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/controlsmart/assets/vendor/fonts/style.css">
 
-    <script type="text/javascript" src="/controlsmart/assets/vendor/js/jquery-2.1.3.js"></script>
-    <script type="text/javascript" src="/controlsmart/assets/vendor/js/links.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <!--<script type="text/javascript" src="/controlsmart/assets/vendor/js/links.js"></script>-->
 
     <script src="/controlsmart/assets/vendor/jquery/jquery.timepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="/controlsmart/assets/vendor/jquery/jquery.timepicker.css">
@@ -21,7 +21,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           
-          <a class="navbar-brand" href="#">ControlSmart</a>
+          <a class="navbar-brand" href="/controlsmart/welcome/administrar">ControlSmart</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -41,9 +41,10 @@
             <li><a href="/controlsmart/semanas/index" id=""><span class="icon-open-book"> </span>Semanas</a></li>
             <li><a href="/controlsmart/acceso/index" id=""><span class="icon-user"> </span>Usuarios</a></li>
             <li><a href="/controlsmart/pagos/index" id=""><span class=" icon-credit"> </span>Pagos</a></li>
-             <li><a href="/controlsmart/reportes/adeudos" id=""><span class=" icon-credit"> </span>Adeudos</a></li>
+             <li><a href="/controlsmart/reportes/adeudos" id=""><span class="icon-news"> </span>Reporte &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adeudos</a></li>
+             <li><a href="/controlsmart/reportes/pagos" id=""><span class="icon-magnifying-glass"> </span>Buscar</a></li>
 
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="show">
-  
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="show"> 
+ 

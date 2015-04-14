@@ -1,6 +1,6 @@
-<br><br><br> 
+<div id="logo"><img src="/controlsmart/assets/img/smartlogo.png"></div>
 <div class="report">
- <img id="imgSmart" src="/controlsmart/assets/img/smart.jpg">
+
  <h2>Control de pagos por semana</h2>
 
 <?php echo '<h4> NAME: <u>'. $datos[0]->cliente . '</u> TEL: <u>'. $datos[0]->celular .'</u> </h4>'?>
