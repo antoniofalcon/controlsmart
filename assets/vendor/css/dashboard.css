@@ -101,6 +101,16 @@ margin: 20px;
 margin-left: 170px;
 
 }
+#divFormUsu{
+width: 600px;
+height: 550px;
+border: 1px rgb(89,89,89) solid;
+border-radius: 15px 15px 15px 15px;
+padding: 50px;
+margin: 20px;
+margin-left: 170px;
+
+}
 #divBotones{
   margin-left: 320px;
   margin-top: 30px;

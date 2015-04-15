@@ -82,6 +82,7 @@ class Acceso extends REST_Controller {
 	public function delete_post($id)
 	{
 		$this->acceso_model->delete($id);
+		redirect('/acceso');
 	}
 	public function login_post()
 	{
@@ -95,6 +96,7 @@ class Acceso extends REST_Controller {
 			printf('Datos Inválidos');
 		}
 		else printf('Bienvenido ' . $r[0]->usuario);
+
 	}
 
 	private function getMethodPost(){

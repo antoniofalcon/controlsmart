@@ -75,6 +75,7 @@ class Semanas extends REST_Controller {
 	public function delete_post($id)
 	{
 		$this->semanas_model->delete($id);
+		redirect('/semanas');
 	}
 
 	private function getMethodPost(){

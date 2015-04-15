@@ -160,12 +160,12 @@ $config = array(
 			),
 	'pagos' => array(
 				array(
-					'field'=>'cboCliente',
+					'field'=>'cboClientes',
 					'label'=>'Cliente',
 					'rules'=>'required'
 				),
 				array(
-					'field'=>'cboSemana',
+					'field'=>'cboSemanas',
 					'label'=>'Semana',
 					'rules'=>'required'
 				)

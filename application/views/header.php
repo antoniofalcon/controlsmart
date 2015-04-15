@@ -35,14 +35,14 @@
         <div class="col-sm-3 col-md-2 sidebar" id="nav">
           <ul class="nav nav-sidebar">
             <li><a href="/controlsmart/clientes/index" id=""><span class="icon-graduation-cap">  </span>Alumnos</a></li>
-            <li><a href="/controlsmart/inscripciones/index" id=""><span class="icon-news">  </span>Inscripciones</a></li>
+           <!-- <li><a href="/controlsmart/inscripciones/index" id=""><span class="icon-news">  </span>Inscripciones</a></li>-->
             <li><a href="/controlsmart/cursos/index" id=""><span class="icon-book">  </span>Cursos</a></li>
             <li><a href="/controlsmart/maestros/index"  id=""><span   class="icon-man">  </span>Maestros</a></li>
             <li><a href="/controlsmart/semanas/index" id=""><span class="icon-open-book"> </span>Semanas</a></li>
             <li><a href="/controlsmart/acceso/index" id=""><span class="icon-user"> </span>Usuarios</a></li>
             <li><a href="/controlsmart/pagos/index" id=""><span class=" icon-credit"> </span>Pagos</a></li>
              <li><a href="/controlsmart/reportes/adeudos" id=""><span class="icon-news"> </span>Reporte &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adeudos</a></li>
-             <li><a href="/controlsmart/reportes/pagos" id=""><span class="icon-magnifying-glass"> </span>Buscar</a></li>
+             <li><a href="/controlsmart/reportes/pagos" id=""><span class=""> </span>Ficha de Pago</a></li>
 
           </ul>
         </div>

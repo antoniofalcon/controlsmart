@@ -85,6 +85,7 @@ class Cursos extends REST_Controller {
 	public function delete_post($id)
 	{
 		$this->cursos_model->delete($id);
+		redirect('/cursos');
 	}
 
 	private function getMethodPost(){
@@ -95,6 +96,7 @@ class Cursos extends REST_Controller {
 			'horaSalida'=>$this->input->post('txtHoraSalida')
 			);
 		return $data;
+
 	}
 }	
 ?>

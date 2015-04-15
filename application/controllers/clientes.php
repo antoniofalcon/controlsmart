@@ -78,6 +78,7 @@ class Clientes extends REST_Controller {
 	{
 		
 		$this->clientes_model->delete($id);
+		redirect('/clientes');
 
 	}
 	private function getMethodPost(){

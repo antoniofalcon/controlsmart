@@ -13,7 +13,7 @@
 		echo '<td>'.$value->hora.'</td>';
 
 		echo '<td>'.$value->semana.'</td>';
-		echo '<td><span class="icon-edit">	</span><a href="/controlsmart/pagos/edit/'.$value->idPago.'">Editar</a>
+		echo '<td>
 		<span class="icon-cup">	</span><a href="/controlsmart/pagos/delete/'.$value->idPago.'">	Eliminar</a></td>';
 		echo '</tr>';
 	}

@@ -72,20 +72,23 @@ class Pagos extends REST_Controller {
 	{
 		$data['title']= 'Pagos';
 		$data['id']= $id;
-		$data['datos'] = $this->pagos_model->getById($data['id']);
+		$data['datos'] = $this->pagos_model->getById($id);
 		$this->load->view('header',$data);
 		$this->load->view('/spa/pagos/delete',$data);
 		$this->load->view('footer');
+	
+
 	}
 
 	public function delete_post($id)
 	{
 		$this->pagos_model->delete($id);
+		redirect('/pagos');
 	}
 
 	private function getMethodPost(){
 		$timestamp = now();
-		$timezone = 'UM8';
+		$timezone = 'UM9';
 		$time = gmt_to_local($timestamp, $timezone);
 		$datestring = "%Y-%m-%d";
 		$hourstring = "%H:%i:%s";

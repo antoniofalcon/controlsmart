@@ -75,6 +75,7 @@ class Maestros extends REST_Controller {
 	public function delete_post($id)
 	{
 		$this->maestros_model->delete($id);
+		redirect('/maestros');
 	}
 
 	private function getMethodPost(){

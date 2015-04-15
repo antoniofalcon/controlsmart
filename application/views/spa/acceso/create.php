@@ -1,5 +1,5 @@
-<div id="divFormularios">
-<center><h3>Nuevo Usuario</h3></center>
+<div id="divFormUsu">
+<center><h3>Agregar Usuario</h3></center>
 <?php 
 	//se genera un arreglo con las propiedades del formulario 
  	$attr= array('id'=>'formUsuario');
@@ -58,16 +58,16 @@
 	//se hacen los llamados a los métodos para construir el formulario y se le pasan las propiedades 
 	//form_close() sirve para cerrar la etiqueta del formulario. ejemplo </form>
  ?>
-<!--<?= form_label('Nombre: ','txtNombre');?> -->
+<?= form_label('Nombre de Usuario: ','txtNombre');?><br>
 <?= form_input($nombre); ?>
 <?= form_error('txtNombre'); ?><br>
-<!--<?= form_label('Cuenta: ','txtCuenta');?>-->
+<?= form_label('Cuenta: ','txtCuenta');?><br>
 <?= form_input($cuenta); ?>
 <?= form_error('txtCuenta'); ?><br>
-<!--<?= form_label('Contraseña: ','txtPswd');?>-->
+<?= form_label('Contraseña: ','txtPswd');?><br>
 <?= form_input($pswd); ?>
 <?= form_error('txtPswd'); ?><br>
-<!--<?= form_label('Confirmar Contraseña: ','txtCPswd');?>-->
+<?= form_label('Confirmar Contraseña: ','txtCPswd');?><br>
 <?= form_input($cPswd); ?>
 <?= form_error('txtCPswd'); ?><br>
 <!--<?= form_label('Nivel: ');?>-->

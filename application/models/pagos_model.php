@@ -18,8 +18,8 @@
 
 			$this->db->select('cliente,semana,idPago,fecha,hora');
 			$this->db->from('pagos');
-			$this->db->join('semanas', 'semanas.idSemana = pagos.idPago');
-			$this->db->join('clientes', 'clientes.idCliente = pagos.idPago');
+			$this->db->join('semanas', 'semanas.idSemana = pagos.idSemana');
+			$this->db->join('clientes', 'clientes.idCliente = pagos.idCliente');
 			$q = $this->db->get();
 			$d = array();
 			foreach ($q->result() as $r)
@@ -32,8 +32,8 @@
 		{            
 			$this->db->select('cliente,semana,idPago,fecha,hora');
 			$this->db->from('pagos');
-			$this->db->join('semanas', 'semanas.idSemana = pagos.idPago');
-			$this->db->join('clientes', 'clientes.idCliente = pagos.idPago');
+			$this->db->join('semanas', 'semanas.idSemana = pagos.idSemana');
+			$this->db->join('clientes', 'clientes.idCliente = pagos.idCliente');
 			$this->db->like('cliente', $cliente); 
 			$q = $this->db->get();
 			$d = array();
@@ -47,11 +47,11 @@
 		public function getById($id){
         	$this->db->select('cliente,semana,idPago,fecha,hora');
 			$this->db->from('pagos');
-			$this->db->join('semanas', 'semanas.idSemana = pagos.idPago');
-			$this->db->join('clientes', 'clientes.idCliente = pagos.idPago');
+			$this->db->join('semanas', 'semanas.idSemana = pagos.idSemana');
+			$this->db->join('clientes', 'clientes.idCliente = pagos.idCliente');
 			$this->db->where('idPago', $id); 
 			$q = $this->db->get();
-			return $q->result();
+			return $q;
 		}
 		public function create($data){
 			$datos=array(
