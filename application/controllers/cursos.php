@@ -15,22 +15,38 @@ class Cursos extends REST_Controller {
     }
 	public function index_get()
 	{
-		$data['datos'] = $this->cursos_model->getAllJoin();
-		$data['title']= 'cursos';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/cursos/index',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['datos'] = $this->cursos_model->getAllJoin();
+			$data['title']= 'cursos';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/cursos/index',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function create_get()
 	{
-		$this->load->model('maestros_model');
-		$data=array (
-			'maestros'=>$this->maestros_model->getAll());
-		$data['title']= 'Cursos';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/cursos/create',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$this->load->model('maestros_model');
+			$data=array (
+				'maestros'=>$this->maestros_model->getAll());
+			$data['title']= 'Cursos';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/cursos/create',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function create_post()
 	{
@@ -47,15 +63,23 @@ class Cursos extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$this->load->model('maestros_model');
-		$data=array (
-			'maestros'=>$this->maestros_model->getAll());
-		$data['id']= $this->uri->segment(3);
-		$data['datos'] = $this->cursos_model->getById($data['id']);
-		$data['title']= 'Cursos';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/cursos/edit',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$this->load->model('maestros_model');
+			$data=array (
+				'maestros'=>$this->maestros_model->getAll());
+			$data['id']= $this->uri->segment(3);
+			$data['datos'] = $this->cursos_model->getById($data['id']);
+			$data['title']= 'Cursos';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/cursos/edit',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function edit_post()
 	{ 
@@ -74,12 +98,20 @@ class Cursos extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['id']= $id;
-		$data['datos'] = $this->cursos_model->getById($data['id']);
-		$data['title']= 'Cursos';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/Cursos/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $id;
+			$data['datos'] = $this->cursos_model->getById($data['id']);
+			$data['title']= 'Cursos';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/Cursos/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function delete_post($id)

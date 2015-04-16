@@ -15,19 +15,35 @@ class Semanas extends REST_Controller {
     }
 	public function index_get()
 	{
-		$data['datos'] = $this->semanas_model->getAll();
-		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/semanas/index',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['datos'] = $this->semanas_model->getAll();
+			$data['title']= 'Semanas';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/semanas/index',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function create_get()
 	{
-		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/semanas/create');
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Semanas';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/semanas/create');
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function create_post()
 	{
@@ -42,12 +58,20 @@ class Semanas extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$data['id']= $this->uri->segment(3);
-		$data['datos'] = $this->semanas_model->getById($data['id']);
-		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/semanas/edit',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $this->uri->segment(3);
+			$data['datos'] = $this->semanas_model->getById($data['id']);
+			$data['title']= 'Semanas';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/semanas/edit',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function edit_post()
 	{
@@ -64,12 +88,20 @@ class Semanas extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['id']= $id;
-		$data['datos'] = $this->semanas_model->getById($data['id']);
-		$data['title']= 'Semanas';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/semanas/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $id;
+			$data['datos'] = $this->semanas_model->getById($data['id']);
+			$data['title']= 'Semanas';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/semanas/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function delete_post($id)

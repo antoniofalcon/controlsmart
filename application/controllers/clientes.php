@@ -16,19 +16,35 @@ class Clientes extends REST_Controller {
     
 	public function index_get()
 	{
-		$data['datos'] = $this->clientes_model->getAll();
-		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/clientes/index',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['datos'] = $this->clientes_model->getAll();
+			$data['title']= 'Clientes';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/clientes/index',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function create_get()
 	{
-		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/clientes/create');
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Clientes';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/clientes/create');
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function create_post()
 	{
@@ -43,12 +59,20 @@ class Clientes extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$data['id']= $this->uri->segment(3);
-		$data['datos'] = $this->clientes_model->getById($data['id']);
-		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/clientes/edit',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $this->uri->segment(3);
+			$data['datos'] = $this->clientes_model->getById($data['id']);
+			$data['title']= 'Clientes';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/clientes/edit',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 
 	}
 	public function edit_post()
@@ -66,12 +90,20 @@ class Clientes extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['id']= $id;
-		$data['datos'] = $this->clientes_model->getById($data['id']);
-		$data['title']= 'Clientes';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/clientes/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $id;
+			$data['datos'] = $this->clientes_model->getById($data['id']);
+			$data['title']= 'Clientes';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/clientes/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function delete_post($id)

@@ -18,19 +18,33 @@ class Acceso extends REST_Controller {
     
 	public function index_get()
 	{
-		$data['datos'] = $this->acceso_model->getAll();
-		$data['title']= 'Acceso';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/acceso/index',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['datos'] = $this->acceso_model->getAll();
+			$data['title']= 'Acceso';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/acceso/index',$data);
+			$this->load->view('footer');
+		}else
+		{
+			redirect('./welcome');
+		}
 	}
 
 	public function create_get()
 	{
-		$data['title']= 'Usuarios';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/acceso/create');
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Usuarios';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/acceso/create');
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function create_post()
 	{	
@@ -47,12 +61,20 @@ class Acceso extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$data['id']= $this->uri->segment(3);
-		$data['datos'] = $this->acceso_model->getById($data['id']);
-		$data['title']= 'Usuarios';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/acceso/edit',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $this->uri->segment(3);
+			$data['datos'] = $this->acceso_model->getById($data['id']);
+			$data['title']= 'Usuarios';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/acceso/edit',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function edit_post()
 	{
@@ -71,12 +93,20 @@ class Acceso extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['id']= $id;
-		$data['datos'] = $this->acceso_model->getById($data['id']);
-		$data['title']= 'Usuarios';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/acceso/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $id;
+			$data['datos'] = $this->acceso_model->getById($data['id']);
+			$data['title']= 'Usuarios';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/acceso/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function delete_post($id)
@@ -84,7 +114,7 @@ class Acceso extends REST_Controller {
 		$this->acceso_model->delete($id);
 		redirect('/acceso');
 	}
-	public function login_post()
+		public function login_post()
 	{
 		$data['title']= 'Login';
 		$data = array(
@@ -93,9 +123,19 @@ class Acceso extends REST_Controller {
 			);
 		$r=$this->acceso_model->login($data);
 		if (!$r) {
-			printf('Datos Inválidos');
+			redirect('/welcome');
+		}else{
+		$sess_array = array();
+
+     	foreach($r as $row)
+       		$sess_array = array(
+         	'id' => $row->idUsuario,
+         	'cuenta' => $row->cuenta);
+
+    	$this->session->set_userdata('logged_in', $sess_array);
+    	$session_data = $this->session->userdata('logged_in');
+		redirect('/welcome/administrar');
 		}
-		else printf('Bienvenido ' . $r[0]->usuario);
 
 	}
 
@@ -109,5 +149,7 @@ class Acceso extends REST_Controller {
 			);
 		return $data;
 	}
+
+	
 }	
 ?>

@@ -18,20 +18,36 @@ class Inscripciones extends REST_Controller {
     }
 	public function index_get()
 	{
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Inscripciones';
+			$this->load->view('header',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function create_get()
 	{
-		$data=array (
-			'clientes'=>$this->clientes_model->getAll(),
-			'cursos'=>$this->cursos_model->getAll());
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('spa/inscripciones/create',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data=array (
+				'clientes'=>$this->clientes_model->getAll(),
+				'cursos'=>$this->cursos_model->getAll());
+			$data['title']= 'Inscripciones';
+			$this->load->view('header',$data);
+			$this->load->view('spa/inscripciones/create',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function create_post()
 	{
@@ -49,14 +65,22 @@ class Inscripciones extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$data=array (
-			'clientes'=>$this->clientes_model->getAll(),
-			'cursos'=>$this->cursos_model->getAll());
-		$data['id']= $this->uri->segment(3);
-		$data['title']= 'Inscripciones';
-		$this->load->view('header',$data);
-		$this->load->view('spa/inscripciones/create',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data=array (
+				'clientes'=>$this->clientes_model->getAll(),
+				'cursos'=>$this->cursos_model->getAll());
+			$data['id']= $this->uri->segment(3);
+			$data['title']= 'Inscripciones';
+			$this->load->view('header',$data);
+			$this->load->view('spa/inscripciones/create',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function edit_post()
 	{
@@ -75,12 +99,20 @@ class Inscripciones extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['id']= $id;
-		$data['datos'] = $this->inscripciones_model->getById($data['id']);
-		$data['title']= 'Incripciones';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/incripciones/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $id;
+			$data['datos'] = $this->inscripciones_model->getById($data['id']);
+			$data['title']= 'Incripciones';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/incripciones/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function delete_post($id)

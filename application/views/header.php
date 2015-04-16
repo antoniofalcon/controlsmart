@@ -21,11 +21,11 @@
       <div class="container-fluid">
         <div class="navbar-header">
           
-          <a class="navbar-brand" href="/controlsmart/welcome/administrar">ControlSmart</a>
+          <a class="navbar-brand" href="./welcome/administrar">ControlSmart</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Cerrar Sesión</a></li>
+            <li><a href="./logout">Cerrar Sesión</a></li>
           </ul>
         </div>
       </div>

@@ -22,18 +22,34 @@ class Reportes extends REST_Controller {
     
 	public function index_get()
 	{
-		$data['title']= 'Reportes';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/reportes/index');
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Reportes';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/reportes/index');
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function pagos_get()
 	{
-		$data['title']= 'Reporte de Pagos';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/reportes/pagos');
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Reporte de Pagos';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/reportes/pagos');
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function pagos_post()
 	{
@@ -60,16 +76,24 @@ class Reportes extends REST_Controller {
 	}
 	public function adeudos_get()
 	{
-		$timestamp = now();
-		$timezone = 'UM8';
-		$time = gmt_to_local($timestamp, $timezone);
-		$datestring = "%d/%m/%Y";
-		$data['fecha'] = mdate($datestring, $time);
-		$data['title']= 'Reporte de Adeudos';
-		$data['datos'] = $this->reportes_model->adeudos();
-		$this->load->view('header',$data);
-		$this->load->view('/spa/reportes/adeudos',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$timestamp = now();
+			$timezone = 'UM8';
+			$time = gmt_to_local($timestamp, $timezone);
+			$datestring = "%d/%m/%Y";
+			$data['fecha'] = mdate($datestring, $time);
+			$data['title']= 'Reporte de Adeudos';
+			$data['datos'] = $this->reportes_model->adeudos();
+			$this->load->view('header',$data);
+			$this->load->view('/spa/reportes/adeudos',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function create_post()
@@ -87,12 +111,20 @@ class Reportes extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$data['id']= $this->uri->segment(3);
-		$data['datos'] = $this->acceso_model->getById($data['id']);
-		$data['title']= 'Usuarios';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/acceso/edit',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $this->uri->segment(3);
+			$data['datos'] = $this->acceso_model->getById($data['id']);
+			$data['title']= 'Usuarios';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/acceso/edit',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function edit_post()
 	{
@@ -111,12 +143,20 @@ class Reportes extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['id']= $id;
-		$data['datos'] = $this->acceso_model->getById($data['id']);
-		$data['title']= 'Usuarios';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/acceso/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['id']= $id;
+			$data['datos'] = $this->acceso_model->getById($data['id']);
+			$data['title']= 'Usuarios';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/acceso/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function delete_post($id)

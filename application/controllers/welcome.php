@@ -17,19 +17,40 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+
 	public function index()
 	{
+		if($this->session->userdata('logged_in'))
+		{
+			redirect('/welcome/administrar');
+		}else
+		{
+			$this->load->helper('form');
+			$this->load->view('login');
+		}
 		
-		$this->load->helper('form');
-		$this->load->view('login');
 	}
 	public function administrar()
 	{
-		$this->load->helper('form');
-		$this->load->view('header');
-		$this->load->view('welcome');
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$this->load->helper('form');
+			$this->load->view('header');
+			$this->load->view('welcome');
+			$this->load->view('footer');
+		}else
+		{
+			redirect('/welcome');
+		}
+		
 	}
+
+	public function logout(){
+      $this->session->unset_userdata('logged_in');
+      $this->session->sess_destroy();
+      redirect('/welcome');
+ }
 }
 
 /* End of file welcome.php */

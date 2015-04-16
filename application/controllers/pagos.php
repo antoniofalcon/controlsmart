@@ -17,22 +17,38 @@ class Pagos extends REST_Controller {
     }
 	public function index_get()
 	{
-		$data['datos'] = $this->pagos_model->getAllJoin();
-		$data['title']= 'Pagos';
-		$this->load->view('header',$data);
-		$this->load->view('/spa/pagos/index',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['datos'] = $this->pagos_model->getAllJoin();
+			$data['title']= 'Pagos';
+			$this->load->view('header',$data);
+			$this->load->view('/spa/pagos/index',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 
 	public function create_get()
 	{
-		$data['title']= 'Pagos';
-		$data=array (
-			'clientes'=>$this->clientes_model->getAll(),
-			'semanas'=>$this->semanas_model->getAll());
-		$this->load->view('header',$data);
-		$this->load->view('spa/pagos/create',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Pagos';
+			$data=array (
+				'clientes'=>$this->clientes_model->getAll(),
+				'semanas'=>$this->semanas_model->getAll());
+			$this->load->view('header',$data);
+			$this->load->view('spa/pagos/create',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function create_post()
 	{
@@ -49,9 +65,17 @@ class Pagos extends REST_Controller {
 	}
 	public function edit_get()
 	{
-		$data['title']= 'Pagos';
-		$this->load->view('header',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Pagos';
+			$this->load->view('header',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	}
 	public function edit_post()
 	{
@@ -70,12 +94,20 @@ class Pagos extends REST_Controller {
 	
 	public function delete_get($id)
 	{
-		$data['title']= 'Pagos';
-		$data['id']= $id;
-		$data['datos'] = $this->pagos_model->getById($id);
-		$this->load->view('header',$data);
-		$this->load->view('/spa/pagos/delete',$data);
-		$this->load->view('footer');
+		if($this->session->userdata('logged_in'))
+		{
+			$data['title']= 'Pagos';
+			$data['id']= $id;
+			$data['datos'] = $this->pagos_model->getById($id);
+			$this->load->view('header',$data);
+			$this->load->view('/spa/pagos/delete',$data);
+			$this->load->view('footer');
+		}
+		else
+		{
+			redirect('./welcome');
+		}
+		
 	
 
 	}

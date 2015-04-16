@@ -31,7 +31,7 @@ $(document).ready(function() {
     <div class="user-icon"></div>
     <div class="pass-icon"></div>
 	
-	<form name="login-form" class="login-form" action="" method="post">
+	<form name="login-form" method="POST" action="./Acceso/login" class="login-form" >
 	    <div class="header">
 			<center><h1>Bienvenido a ControlSmart</h1></center>
 	    </div>
@@ -41,7 +41,7 @@ $(document).ready(function() {
 	'class'=>'form-horizontal"'
 ); ?>
 
-<?=form_open("/acceso/login",$attr);?>
+<!--<?=form_open("/Acceso/login",$attr);?>-->
 <?php
 	$cuenta= array(
 		'name'=>'txtCuenta',
@@ -73,7 +73,7 @@ $(document).ready(function() {
 </body>
 </html>
 <!--<?=form_button($btnAttr2); ?>-->
-<!--<?=form_close();?>
+<!--<?=form_close();?>-->
     
 
     
